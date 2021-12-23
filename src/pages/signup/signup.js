@@ -17,6 +17,10 @@ const Signup = () => {
   const validate =  Yup.object({
     email:  Yup.string().email('Email is invalid').required('Required'),
     password: Yup.string().required().min(6,'minimum 6 characters')
+    .matches(
+      /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+      "Password must contain at least 8 characters, one uppercase, one number and one special case character"
+    ),
   })
   
   const loginFields = ({
